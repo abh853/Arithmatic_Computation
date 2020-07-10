@@ -1,31 +1,75 @@
-#!/bin/bash -x 
-read -p "Enter the 1st number:" a
-read -p "Enter the 2nd number:" b
-read -p "Enter the 3rd number:" c
+#! /bin/bash 
 
-ans_1=$(( (a+b)*c ))
-echo "The ans is :" $ans_1
+read -p "Enter value of A" a;
+read -p "Enter value of B" b;
+read -p "Enter value of C" c;
 
-ans_2=$(( (a*b)+c ))
-echo "The ans is :" $ans_2
-
-ans_3=$(( (c+a)/b ))
-echo "The ans is :" $ans_3
-
-ans_4=$(( (a%b)+c ))
-echo "The ans is :" $ans_4
-
-declare -A add
-add[ans_1]=$ans_1
-add[ans_2]=$ans_2
-add[ans_3]=$ans_3
-add[ans_4]=$ans_4
-
-echo "The dictionary is :" ${add[*]}
+uc2=$(($a+$b*$c));
+uc3=$(($a*$b+$c));
+uc4=$((($c+$a)/$b));
+uc5=$((($a%$b)+$c));
 
 
-for i in {1..4}
+declare -A  assoarray;
+
+assoarray[uc2]=$uc2;
+assoarray[uc3]=$uc3;
+assoarray[uc4]=$uc4;
+assoarray[uc5]=$uc5;
+array=();
+
+for ele in ${!assoarray[@]}
 do
-	array[$i]=${add[ans_$i]}
+  array[i]=${assoarray[$ele]};
+  i=$(($i+1));
 done
-echo "Array elements are:"${array[*]}
+
+
+for ((i = 0; i<4; i++)) 
+do
+      
+    for((j = 0; j<4-1; j++)) 
+    do
+      
+      k=$(($j+1));
+        if [ ${array[$j]} -gt ${array[$k]} ] 
+        then
+            # swap
+
+ 
+            temp=${array[j]} ;
+            array[$j]=${array[k]};   
+            array[$k]=$temp ;
+        fi
+    done
+  
+
+done
+
+
+echo "values in ascending order  ${array[@]}";
+
+
+
+for ((i = 0; i<4; i++)) 
+do
+
+    for((j = 0; j<4-1; j++)) 
+    do
+
+      k=$(($j+1));
+        if [ ${array[$j]} -lt ${array[$k]} ] 
+        then
+            # swap
+
+ 
+            temp=${array[j]} ;
+            array[$j]=${array[k]};   
+            array[$k]=$temp ;
+        fi
+    done
+  
+
+done
+
+echo "values in descending order  ${array[@]}";

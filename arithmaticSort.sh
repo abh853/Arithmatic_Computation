@@ -1,3 +1,5 @@
-#!/bin/bash 
+#! /bin/bash 
 
-echo "Welcome to Sorting"
+read -p "Enter value of A" a;
+read -p "Enter value of B" b;
+read -p "Enter value of C" c;

@@ -1,11 +1,12 @@
-#! /bin/bash 
+#!/bin/bash -x
 
-read -p "Enter value of A" a;
-read -p "Enter value of B" b;
-read -p "Enter value of C" c;
+echo "Arithamatic computation and sorting"
 
-uc2=$(($a+$b*$c));
-uc3=$(($a*$b+$c));
-uc4=$((($c+$a)/$b));
-uc5=$((($a%$b)+$c));
+echo "Enter Three Numbers:"
 
+read -p "a: " a
+read -p "a: " b
+read -p "a: " c
+
+d=$(($a + $b * c))
+e=$(($a * $b + c))
